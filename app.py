@@ -36,6 +36,28 @@ def parameter_input(name, weight, key, classifier, unit=None, options=None):
     st.caption(f"→ {level}")
     return (name,weight,level)
 
+PRESETS = {
+    "Illinois Basin-Decatur": {
+        "perm_mode": "Enter data",         "perm_val": 0.1013,
+        "path_mode": "Enter data",         "path_ans": "yes",
+        "rough_mode": "Unknown",
+        "size_mode": "Choose risk level",  "size_lvl": "low",
+        "cont_mode": "Enter data",         "cont_ans": "continuous",
+        "stress_mode": "Choose risk level","stress_lvl": "high",
+        "prox_mode": "Enter data",         "prox_val": 2.2,
+        "cap_mode": "Enter data",          "cap_val": 125.0,
+    },
+}
+
+st.subheader("Load a validation case")
+cols = st.columns(len(PRESETS))
+for i, case_name in enumerate(PRESETS):
+    if cols[i].button(case_name):
+        for k, v in PRESETS[case_name].items():
+            st.session_state[k] = v
+        st.rerun()
+
+
 entries = [
     parameter_input("Fault permeability", 2, "perm", classify_permeability, unit="mD"),
     parameter_input("Fluid pathways", 2, "path", classify_pathways, options=["yes", "no"]),
