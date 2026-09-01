@@ -16,10 +16,12 @@ def parameter_input(name, weight, key, classifier, unit=None, options=None):
     st.subheader(name)
     mode = st.radio(
         "Input mode",
-        ["Enter data","Choose risk level","Unknown"]
+        ["Enter data","Choose risk level","Unknown"],
+        key=key + "_mode",
+        horizontal=True,
     )
 
-    if mode == "Eneter data":
+    if mode == "Enter data":
         if unit:
             value = st.number_input(f"{name} ({unit})", key=key + "_val")
             level = classifier(value)
