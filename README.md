@@ -2,7 +2,7 @@
 
 A semi-quantitative screening tool that estimates induced-seismicity risk for CO₂ geological storage sites using only geological parameters available **before** injection begins.
 
-**Live app:** http://localhost:8501
+**Live app:** https://ccs-seismicity-screener.streamlit.app
 
 ---
 
